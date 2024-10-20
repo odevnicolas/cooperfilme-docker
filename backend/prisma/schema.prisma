@@ -1,0 +1,53 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT //cliente
+  ANALYST //analista
+  ACCOUNTANT //revisor
+  APPROVERS //aprovador
+}
+
+enum ScriptStatus {
+  AWAITNG_ANALYSIS //analise pendente
+  IN_ANALYSIS //analise em andamento
+  AWAITNG_REVISION //revisao pendente
+  IN_REVISION //revisao em andamento
+  AWAITNG_APPROVAL //aprovacao pendente
+  IN_APPROVAL //aprovacao em andamento
+  APROVED //aprovado
+  REJECTED //rejeitado
+}
+
+model script {
+  id            String       @id @default(uuid())
+  name          String
+  email         String
+  phoneNumber   String
+  phoneNumerAlt String?
+  scriptFile    String
+  responsibleId String?
+  status        ScriptStatus @default(AWAITNG_ANALYSIS)
+  userId        String
+  user          user?        @relation(fields: [userId], references: [id])
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model user {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(CLIENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  script    script[]
+}
