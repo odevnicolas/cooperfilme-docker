@@ -7,7 +7,6 @@ import { Label } from '@/components/ui/label'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { AuthResponse } from '@/core/models/login'
 import { api } from '@/core/services/api'
-import { formatPhoneNumber } from '@/core/utils/masks'
 import { Plus } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
@@ -81,7 +80,7 @@ export function ScriptSheet() {
             <Label className="text-sm font-normal">Telefone <span className='text-brand'>*</span></Label>
             <Input
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))}
+              onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="(00) 00000-0000"
             />
           </div>
@@ -90,7 +89,7 @@ export function ScriptSheet() {
             <Label className="text-sm font-normal">Telefone 2</Label>
             <Input
               value={phoneNumerAlt}
-              onChange={(e) => setPhoneNumerAlt(formatPhoneNumber(e.target.value))}
+              onChange={(e) => setPhoneNumerAlt(e.target.value)}
               placeholder="(00) 00000-0000"
             />
           </div>

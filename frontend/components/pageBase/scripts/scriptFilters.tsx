@@ -4,12 +4,9 @@ import { useScripts } from '@/core/hooks/useScript'
 import { RefreshCcw } from 'lucide-react'
 import { Button } from '../../ui/button'
 import { ScriptSheet } from './scriptSheet'
-import { useSession } from 'next-auth/react'
-import { AuthResponse } from '@/core/models/login'
 
 export function ScriptsFilters() {
-  const { refetchScripts, isFetchingScripts } = useScripts();
-  const session = useSession();
+  const { refetchScripts, handleSearch, isFetchingScripts } = useScripts();
   return (
     <FiltersWrapper>
       <div className="flex items-center justify-between w-full gap-3 lg:justify-end">
@@ -25,9 +22,7 @@ export function ScriptsFilters() {
           Atualizar
         </Button>
 
-        {(session.data?.user as AuthResponse)?.acess.role === 'CLIENT' && (
-          <ScriptSheet />
-        )}
+        <ScriptSheet />
       </div>
     </FiltersWrapper>
   )

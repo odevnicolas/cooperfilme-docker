@@ -84,7 +84,6 @@ export function ScriptsTable() {
       refetchScripts()
     } catch (error) {
       toast.error('Ocorreu um erro ao assumir o roteiro.')
-      console.error(error)
     }
   }
 

@@ -16,5 +16,7 @@ export class IUserCreateRequest implements IUserCreate {
   @Length(12, undefined, { message: minContent(12, "senha") })
   password: string;
 
+  salt: string;
+
   script: Script[]
 }

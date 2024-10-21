@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
+import { useSession } from 'next-auth/react'
+import { AuthResponse } from '../models/login'
 import { Paginated } from '../models/paginated'
 import { Script } from '../models/script'
 import { useScriptsStore } from '../stores/scriptStore'
 import { useApi } from './useApi'
 import { usePagination } from './usePagination'
-import { useSession } from 'next-auth/react'
-import { AuthResponse } from '../models/login'
 
 export function useScripts() {
   const { api } = useApi()

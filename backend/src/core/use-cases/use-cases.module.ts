@@ -5,10 +5,10 @@ import { SinginAuthUseCase } from "./auth/singin/singin-auth.use-case";
 import { CreateScriptsUseCase } from "./script/create-script/create-script.use-case";
 import { GetAllScriptsUseCase } from "./script/getAll/getall-script.use-case";
 import { UpdateScriptsUseCase } from "./script/update-status/update-status.use-case";
-import { createUserUseCase } from "./user/create-user/create-user.use-case";
+import { CreateUserUseCase } from "./user/create-user/create-user.use-case";
 
 const userUseCases: Provider[] = [
-  createUserUseCase,
+  CreateUserUseCase,
 ];
 
 const authUseCases: Provider[] = [

@@ -5,13 +5,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn as nextAuthSignIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { z } from 'zod'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
 import { FieldError } from './fieldError'
-import { useForm } from 'react-hook-form';
 import { Spinner } from './spinner'
 
 type AuthCredentials = z.infer<typeof loginResolver>

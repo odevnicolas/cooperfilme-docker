@@ -10,7 +10,7 @@ import { ScriptService } from './script.service';
 export class ScriptController {
   constructor(private readonly scriptService: ScriptService) { }
 
-  @Get('all/{userId}')
+  @Get('/all/:userId')
   async getAllScripts(
     @Req() request: Request,
     @Param('userId') userId: string

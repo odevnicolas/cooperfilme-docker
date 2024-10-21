@@ -9,7 +9,8 @@ async function main() {
     create: {
       name: "eurekaEscritor",
       email: "eurekaEscritor@eureka.com",
-      password: "$2a$10$URvWfpoDZB3t2DjH9Jh1VeGTT0MxLmU21FuCpoKPZcSfamst1InIy",
+      password: "c5ca737d594b381a4204a1df219433305a34b5761a5d7d7a0196be61d7b51384",
+      salt: "cea7966df6fc298176a586dd586ce72d",
       role: "CLIENT",
     },
   });
@@ -21,7 +22,8 @@ async function main() {
     create: {
       name: "eurekaAnalista",
       email: "eurekaAnalista@eureka.com",
-      password: "$2a$10$URvWfpoDZB3t2DjH9Jh1VeGTT0MxLmU21FuCpoKPZcSfamst1InIy",
+      password: "c5ca737d594b381a4204a1df219433305a34b5761a5d7d7a0196be61d7b51384",
+      salt: "cea7966df6fc298176a586dd586ce72d",
       role: "ANALYST",
     },
   });

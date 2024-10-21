@@ -1,9 +1,16 @@
 FROM node:18
+
 WORKDIR /app
+
 COPY package*.json ./
-RUN rm -rf node_modules
-RUN npm install
+
+RUN npm ci
+COPY . /app
+RUN npx prisma generate
+COPY prisma ./prisma/
+
 COPY . .
+
 RUN npm run build
 RUN ls -la dist
-CMD ["sh", "-c", "npx prisma migrate deploy && npm run seed"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run seed && npm run start:dev"]

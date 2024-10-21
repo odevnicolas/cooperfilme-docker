@@ -5,6 +5,10 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3333
+      - NEXTAUTH_LOGIN_URL=http://localhost:3333/auth/singin
+      - NEXTAUTH_SECRET=secret
     ports:
       - "3000:3000"
     depends_on:
@@ -20,6 +24,9 @@ services:
       - DATABASE_URL=postgres://cooperfilme-api:cooberfilmePass@db:5432/cooperfilme-db
     depends_on:
       - db
+    volumes:
+      - ./backend/src:/app/src
+    
 
   db:
     image: postgres:14
