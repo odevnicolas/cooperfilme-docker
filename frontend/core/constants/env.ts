@@ -1,4 +1,4 @@
 export const env = {
-  API_URL: process.env.NEXT_PUBLIC_API_URL,
-  LOGIN_URL: process.env.NEXTAUTH_LOGIN_URL,
+  API_URL: 'http://backend:3333',
+  LOGIN_URL: 'http://backend:3333/auth/singin',
 }

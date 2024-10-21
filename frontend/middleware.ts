@@ -21,7 +21,7 @@ export default withAuth(
       signIn: '/',
       error: '/error',
     },
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: 'secret',
   },
 )
 

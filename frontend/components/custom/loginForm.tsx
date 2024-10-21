@@ -29,11 +29,13 @@ export function LoginForm() {
 
   async function signIn(data: AuthCredentials) {
     setLoading(true)
+    console.log(data)
     const result = await nextAuthSignIn('credentials', {
       ...data,
       redirect: false,
       callbackUrl: '/home',
     })
+    console.log(result)
     setLoading(false)
 
     if (result?.error) {
