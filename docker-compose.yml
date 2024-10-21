@@ -1,6 +1,18 @@
 version: '3'
 
-services:
+services:  
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=cooperfilme-api
+      - POSTGRES_PASSWORD=cooberfilmePass
+      - POSTGRES_DB=cooperfilme-db
+    container_name: cooperfilme-db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
   frontend:
     build:
       context: ./frontend
@@ -24,20 +36,6 @@ services:
       - DATABASE_URL=postgres://cooperfilme-api:cooberfilmePass@db:5432/cooperfilme-db
     depends_on:
       - db
-    volumes:
-      - ./backend/src:/app/src
-    
-
-  db:
-    image: postgres:14
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: cooperfilme-api
-      POSTGRES_PASSWORD: cooberfilmePass
-      POSTGRES_DB: cooperfilme-db
-    volumes:
-      - dbdata:/var/lib/postgresql/data
 
 volumes:
   dbdata:
