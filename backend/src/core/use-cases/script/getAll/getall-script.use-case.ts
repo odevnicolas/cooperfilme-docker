@@ -14,13 +14,15 @@ export class GetAllScriptsUseCase {
 
   async execute({ where: filter, orderBy, order, skip, take, userId }: IIndex): Promise<{ count: number, rows: Script[] }> {
     const user = await this.userRepository.findOne(userId)
-
+    let roleFilter: any = {}
     if (user.role === 'CLIENT') {
-      filter.userId = user.id;
+      roleFilter = {
+        userId: user.id,
+      }
     }
 
     return await this.scriptRepository.index({
-      where: filter,
+      where: roleFilter,
       orderBy: formatOrderBy(orderBy, order),
       skip,
       take
